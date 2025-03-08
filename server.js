@@ -99,7 +99,8 @@ app.post("/authenticate", async (req, res) => {
 
 // 🔐 **Middleware to Authenticate User**
 function authenticateToken(req, res, next) {
-  const token = req.cookies.token; // Read JWT from HTTP-Only cookie
+  const token =
+    req.headers.authorization && req.headers.authorization.split(" ")[1]; // Extract token from Bearer format
 
   if (!token) {
     return res.status(401).send("Access denied. No token provided.");
