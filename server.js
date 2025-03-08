@@ -6,6 +6,13 @@ const cookieParser = require("cookie-parser");
 const cors = require("cors");
 const { google } = require("googleapis");
 
+app.use(
+  cors({
+    origin: "https://leisure-frontend.vercel.app", // Allow requests from frontend
+    credentials: true, // Allow cookies and authentication headers
+  })
+);
+
 // Load environment variables
 const PASSWORDS_SHEET_ID = process.env.PASSWORDS_SHEET_ID;
 const PRICES_SHEET_ID = process.env.PRICES_SHEET_ID;
