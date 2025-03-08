@@ -4,6 +4,7 @@ const jwt = require("jsonwebtoken");
 const path = require("path");
 const cookieParser = require("cookie-parser");
 const cors = require("cors");
+const app = express();
 const { google } = require("googleapis");
 
 app.use(
@@ -24,7 +25,6 @@ const GOOGLE_CREDENTIALS = JSON.parse(
 );
 
 // Initialize Express app
-const app = express();
 app.use(express.static(path.join(__dirname, "../client"))); // Serve static files
 app.use(express.json()); // Parse JSON request
 app.use(express.urlencoded({ extended: true })); // Parse URL-encoded form data
