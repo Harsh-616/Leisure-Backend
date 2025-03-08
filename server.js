@@ -7,10 +7,16 @@ const cors = require("cors");
 const app = express();
 const { google } = require("googleapis");
 
+const allowedOrigins = [
+  "https://leisure-frontend.vercel.app",
+  "https://leisure-frontend.vercel.app/home.html" // Include any frontend preview links
+];
 app.use(
   cors({
-    origin: "https://leisure-frontend.vercel.app", // Allow requests from frontend
+    origin:allowedOrigins, // Allow requests from frontend
     credentials: true, // Allow cookies and authentication headers
+    methods: ["GET", "POST", "PUT", "DELETE"], // Allowed HTTP methods
+    allowedHeaders: ["Content-Type", "Authorization"], // Allowed headers
   })
 );
 
